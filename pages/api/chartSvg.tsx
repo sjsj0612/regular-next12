@@ -1,5 +1,4 @@
 import { NextApiHandler } from 'next';
-import { createCanvas } from 'canvas';
 import { VictoryChart, VictoryBar } from 'victory';
 
 interface ChartData {
@@ -14,7 +13,6 @@ const handler: NextApiHandler<ChartData> = async (req, res) => {
 
       const data = req.body;
       console.log('data', data)
-      const canvas = createCanvas(800, 600);
       const chart = (
         <VictoryChart
           width={800}

@@ -9,11 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/dom-to-image": "^2.6.4",
+    "@types/downloadjs": "^1.4.3",
     "@types/victory": "^35.0.0",
+    "aws-sdk": "^2.1384.0",
+    "axios": "^1.4.0",
     "canvas": "^2.11.2",
+    "dom-to-image": "^2.6.0",
+    "dotenv": "^16.0.3",
+    "downloadjs": "^1.4.7",
+    "html-to-image": "^1.11.11",
     "next": "12.3.4",
+    "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sharp": "^0.32.1",
+    "styled-components": "^6.0.0-rc.2",
     "victory": "^36.6.10",
     "victory-chart": "^36.6.0",
     "victory-core": "^36.6.0"
