@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-import downloadjs from "downloadjs";
+import styled from '@emotion/styled';
 import domtoimage from 'dom-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import axios from 'axios';
 import Bar from '../components/Bar'
 
@@ -73,23 +71,13 @@ const Page = () => {
       formData2.append("targetFile", myFile)
 
       return axios
-          .post('https://puzzle-hub-dev.data-puzzle.com/api/puzzle-management/s3-files', formData2, {
+        .post('https://puzzle-hub-dev.data-puzzle.com/api/puzzle-management/s3-files', formData2, {
             headers: {  
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
             },
-          })
-          .then((res) => { console.log(res) });
-
-    //   return await axios({
-    //     method: "POST",
-    //     url: `https://puzzle-hub-dev.data-puzzle.com/api/puzzle-management/s3-files`,
-    //     headers: {
-    //       "Content-Type": "application/json", // Content-Type을 반드시 multipart/form-data 이렇게 하여야 한다.
-    //       "Authorization": `Bearer ${token}`,        
-    //     },
-    //     data: formData, // data 전송시에 반드시 생성되어 있는 formData 객체만 전송 하여야 한다.
-    //   }).then((res) => {console.log(res)})
+        })
+        .then((res) => { console.log(res) });
     }
 
     const onSubmitFile = async () => {
@@ -159,7 +147,7 @@ const Page = () => {
     return (
       <Container>
           <ImageContainer ref={ref}>
-              <Bar/>
+              {/* <Bar/> */}
           </ImageContainer>
           <button onClick={() => handleClick()}>Click</button>
           <button onClick={() => onSubmitImage(ref)}>Image Submit</button>

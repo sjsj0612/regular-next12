@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import React from 'react';
 import { VictoryChart, VictoryScatter, VictoryBar, VictoryAxis, VictoryLabel, VictoryContainer } from 'victory';
+import { sortByValueDesc } from '../utils/common';
 // import { ReactComponent as Svg1} from "./svg/file1.svg";
 // import { ReactComponent as Svg2} from "./svg/file2.svg";
 // import { ReactComponent as Svg3} from "./svg/file3.svg";
@@ -35,17 +36,29 @@ const AddSvg = ({ x, y, datum } : any) => {
 const Rect = styled.rect`
 `;
 
-const Victory = () => {
-  const data = [
-    { x: " ", y: 0, fontColor: 'transparent'},
-    { x: "음식점", y: 21.4, color: "#0C8BFF", dy:-32 },
-    { x: "학원", y:8.8, color: "#0C8BFF", dy:-32 },
-    { x: "의원", y: 5.9, color: "#0C8BFF" , dy:-32},
-    { x: "미용실", y: 3.9, color: "#A6D4FF", dy:-32 },
-    { x: "부동산", y: 3.0, color: "#A6D4FF", dy:-32 },
-    { x: "카페", y: 2.3, color: "#A6D4FF", dy:-32 },
-    { x: "  ", y: 0, fontColor: 'transparent' }
-  ];
+interface Props {
+  data : any
+}
+const Victory = ({ data : data_ }: Props) => {
+  console.log(sortByValueDesc(data_, 'rate'))
+  const orderedData =  sortByValueDesc(data_, 'rate');
+  const data = sortByValueDesc(orderedData, 'rate').map((item: any, index: number) => {
+    return {
+      x: item.category,
+      y: item.rate,
+      color: item.ranking < 4 ? "#0C8BFF" : "#A6D4FF"
+    }
+  })
+  // const data = [
+  //   { x: " ", y: 0, fontColor: 'transparent'},
+  //   { x: "음식점", y: 21.4, color: "#0C8BFF", dy:-32 },
+  //   { x: "학원", y:8.8, color: "#0C8BFF", dy:-32 },
+  //   { x: "의원", y: 5.9, color: "#0C8BFF" , dy:-32},
+  //   { x: "미용실", y: 3.9, color: "#A6D4FF", dy:-32 },
+  //   { x: "부동산", y: 3.0, color: "#A6D4FF", dy:-32 },
+  //   { x: "카페", y: 2.3, color: "#A6D4FF", dy:-32 },
+  //   { x: "  ", y: 0, fontColor: 'transparent' }
+  // ];
 
   return (
     <Container className='Container'>

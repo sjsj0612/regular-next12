@@ -1,26 +1,58 @@
-html,
+html {
+  font-family: Pretendard, sans-serif;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/Pretendard-Bold.woff2") format("woff2");
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/Pretendard-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/Pretendard-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/Pretendard-Regular.woff2") format("woff2");
+}
+
+/* rounded-column-plot */
+.subway g[class*="plot-group"] rect {
+  rx: 25;
+  ry: 25;
+}
+
+.restaurantCall g[class*="plot-group"] rect {
+  rx: 2;
+  ry: 2;
+}
+
+.shoppingmallUsageStatChart g[class*="plot-group"] rect {
+  rx: 4;
+  ry: 4;
 }

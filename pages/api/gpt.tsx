@@ -24,6 +24,7 @@ const handler: NextApiHandler = async (req, res) => {
         const request = req.body;
         const question = request.question;
 
+        console.log('question', question)
         if (!question) {
             return new Response('question not exist', {
                 status: 500,
