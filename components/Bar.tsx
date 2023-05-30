@@ -40,12 +40,10 @@ interface Props {
   data : any
 }
 const Victory = ({ data : data_ }: Props) => {
-  console.log(sortByValueDesc(data_, 'rate'))
-  const orderedData =  sortByValueDesc(data_, 'rate');
-  const data = sortByValueDesc(orderedData, 'rate').map((item: any, index: number) => {
+  const data = data_.map((item: any, index: number) => {
     return {
       x: item.category,
-      y: item.rate,
+      y: Number(item.rate),
       color: item.ranking < 4 ? "#0C8BFF" : "#A6D4FF"
     }
   })
@@ -76,7 +74,7 @@ const Victory = ({ data : data_ }: Props) => {
             style={{
                 data: { fill: ({ datum }) => datum.color },
             }}
-            data={data}
+            data={sortByValueDesc(data, 'y')}
             labels={({ datum }) => datum.y}
             labelComponent={
               <VictoryLabel 
