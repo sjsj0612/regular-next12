@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next';
 import { VictoryChart, VictoryBar } from 'victory';
-import sharp from 'sharp';
+// import sharp from 'sharp';
 
 interface ChartData {
   labels: string[];
@@ -86,14 +86,14 @@ const handler: NextApiHandler<ChartData> = async (req, res) => {
     //   console.log('svgString', svgString);
       const svg = Buffer.from(example2);
       console.log('svg', svg)
-      const png = await sharp(svg)
-        //.flatten({ background: 'white' })
-        .png().toBuffer()
+      // const png = await sharp(svg)
+      //   //.flatten({ background: 'white' })
+      //   .png().toBuffer()
 
       res.writeHead(200, {
         'Content-Type': 'image/png',
       });
-      res.end(png);
+      // res.end(png);
     }
 };
 

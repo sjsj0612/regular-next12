@@ -22,9 +22,9 @@ const handler: NextApiHandler = async (req, res) => {
 
         // convert csv file (stream) to JSON format data
         const json = await csv().fromStream(stream);
-        // console.log({ data : json })
         res.status(200).json({ data: json })
     }  
+    
     if (req.method === 'POST') {
         const { fileName } = req.body;
         const params = {

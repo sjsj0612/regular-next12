@@ -1,4 +1,4 @@
-import { createCanvas } from 'canvas'
+// import { createCanvas } from 'canvas'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -8,8 +8,8 @@ import { VictoryChart } from 'victory-chart'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const canvas = createCanvas(800, 600);
-  const ctx = canvas.getContext('2d');
+  // const canvas = createCanvas(800, 600);
+  // const ctx = canvas.getContext('2d');
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
