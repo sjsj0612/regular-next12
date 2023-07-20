@@ -60,7 +60,7 @@ const Victory = ({ data : data_ }: Props) => {
 
   return (
     <Container className='Container'>
-        <VictoryChart domainPadding={{ x: 0, y: 80}} width={860} height={520} containerComponent={<VictoryContainer responsive={false}/>}>
+        <VictoryChart domainPadding={{ x: 0, y: 80}} width={900} height={520} containerComponent={<VictoryContainer responsive={false}/>}>
         <VictoryAxis crossAxis 
             width={500}
             style={{

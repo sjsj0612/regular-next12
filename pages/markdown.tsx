@@ -23,12 +23,16 @@ const MdContainer = styled.div`
     width: 900px;
     padding: 20px;
 `
-const ImageContainer = styled.div``;
+const ImageContainer = styled.div`
+    display: flex;
+    width: max-content;
+    height: max-content;
+`;
 
 
 const Page: NextPage = () => {
     const [token, setToken] = useState();
-    const [imageUrl, setImageUrl] = useState('https://s3.ap-northeast-2.amazonaws.com/diaas-puzzle-hub-backend-imagefile-upload-dev/INSIGHT_ATTACHED_FILE/INSIGHT_ATTACHED_FILE-20230530052738-image.jpeg');
+    const [imageUrl, setImageUrl] = useState('https://s3.ap-northeast-2.amazonaws.com/diaas-puzzle-hub-backend-imagefile-upload-dev/INSIGHT_ATTACHED_FILE/INSIGHT_ATTACHED_FILE-20230719051820-image.jpeg');
     const [prompt, setPrompt] = useState('');
     const [text, setText] = useState<string>('이번주 에 대해 비교해 보면, 부동산의 통화 비율은 저번주보다 3.8% 상승하여 4위로 위치하고 있고, 음식점의 통화 비율은 저번주보다 2.5% 하락하여 1위로 유지하고 있습니다. 학원의 통화 비율은 저번주보다 5.7% 하락하여 2위로 위치하고 있고, 의원의 통화 비율은 저번주보다 6.3% 하락하여 5위로 위치하고 있습니다. 미용실의 통화 비율은 저번주보다 1.6% 하락하여 6위로 위치하고 있고, 카페의 통화 비율은 저번주보다 6.8% 상승하여 3위로 위치하고 있습니다.');
 
@@ -61,11 +65,22 @@ const Page: NextPage = () => {
 
     // (3) 그림을 그려서 올리고 s3 주소를 받아야된다
     const onSubmitImage = async (ref:any) => {
-        const formData = new FormData()
-        const image = await domtoimage.toBlob(ref.current);
+        const scale = 3; // 화질 좋게  
+        const image = await domtoimage.toBlob(ref.current, {
+            quality: 0.99,
+            width: ref.current.clientWidth * scale,
+            height: ref.current.clientHeight * scale,
+            style: {
+                transform: 'scale('+scale+')',
+                transformOrigin: 'top left'
+            }
+        });
+
         const myFile = new File([image], 'image.jpeg', {
             type: image.type,
         });
+
+        const formData = new FormData();
         formData.append("fileCategory", "INSIGHT_ATTACHED_FILE")
         formData.append("targetFile", myFile)
   
@@ -141,12 +156,27 @@ ${text.replace('\n', '').trim()}
         ) 
     }, [text, imageUrl])
 
+    // (7) 인사이트 마크다운을 어드민으로 보내자
+    const onSubmitInsight = async (markdown:any) => {
+        await axios({
+            method: "POST",
+            url: "https://puzzle-hub-dev.data-puzzle.com/api/puzzle-management/insights",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            data: markdown
+        }).then((res) => console.log('res', res))
+        .catch((err) => console.log('err', err))
+      }
+
 
     return (
       <Container>
             <div>
                 <button onClick={() => onSubmitImage(ref)}>이미지 업로드</button>
                 <button onClick={() => onCallChatGPT()}>chatGPT야 나대신 글을 써줘</button>
+                <button onClick={() => onSubmitInsight(contents)}>어드민에 인사이트를 올리자</button>
             </div>
             <h2>이미지야</h2>
             <ImageContainer ref={ref}>

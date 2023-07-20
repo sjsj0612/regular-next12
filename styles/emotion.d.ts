@@ -11,6 +11,12 @@ declare module "@emotion/react" {
       cardWidth: string;
       cardHeight: string;
       footerHeight: string;
+      mobileMinWidth: string;
+      mobileMaxWidth: string;
+      mobilePadding: string;
+      sectionGap: string;
+      mobileSectionGap: string;
+      mapHeaderHeight: string;
 
       baseFontSize: {
         desktop: string;
@@ -32,16 +38,22 @@ declare module "@emotion/react" {
       grayAf: string;
       grayD0: string;
       grayEa: string;
+      grayF3: string;
       grayF4: string;
+      grayF0: string;
       grayD9: string;
       gray70: string;
       gray97: string;
+      gray95: string;
       gray8b: string;
+      gray33: string;
+      gray77: string;
       pointFc: string;
       pointF7: string;
       point70: string;
       pointC5: string;
       point6A: string;
+      point0C: string;
       point78: string;
       point4A: string;
       point6B: string;
@@ -50,6 +62,7 @@ declare module "@emotion/react" {
       pointEb: string;
       point60: string;
       point8C: string;
+      point1F: string;
       bg: string;
       error: string;
       loading: string;
@@ -72,9 +85,28 @@ declare module "@emotion/react" {
       congestionLevel2: string;
       congestionLevel3: string;
       congestionLevel4: string;
+
+      bannerBG01: string;
+      bannerBG02: string;
+      bannerBG03: string;
+      bannerBG04: string;
+
+      menuCatalogHeader: string;
+
+      cardListBackground: string;
+
+      color1: string;
+      color2: string;
+      color3: string;
+      color4: string;
+      color5: string;
+
+      textColor1: string;
+      textColor2: string;
     };
   }
 }
+
 declare module "*.svg";
 
 declare module "chart.js" {
